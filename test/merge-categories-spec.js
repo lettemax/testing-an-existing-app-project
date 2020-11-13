@@ -1,15 +1,31 @@
 const { expect } = require('chai');
 const { mergeCategories } = require('../merge-categories');
+const handlebars = require("handlebars");
+const handlebarsHelpers = require("handlebars-helpers");
+const helpers = require('handlebars-helpers');
+helpers.math({handlebars});
 
 describe("mergeCategories()", () => {
   context("Using <li> tags", () => {
+    
     const template = `
-      <div>
-        <ul>
-          <!-- Content here -->
-        </ul>
-      </div>
-    `;
+    <div>
+      <ul>
+        {{#each categories}}
+          <li>{{ this }}</li>
+        {{/each}}
+      </ul>
+    </div>
+  `;
+  const template2 = `
+  <div>
+    <select>
+      {{#each categories}}
+        <option>{{ this }}</option>
+      {{/each}}
+    </select>
+  </div>
+`;
 
     it("should return no <li>s for no categories", () => {
         let emptyArr = []

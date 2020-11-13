@@ -1,7 +1,9 @@
 const { expect } = require('chai');
 const { mergeItems } = require('../merge-items');
-const handlebars = require("handlebars")
-const handlebarsHelpers = require("handlebars-helpers")
+const handlebars = require("handlebars");
+const handlebarsHelpers = require("handlebars-helpers");
+const helpers = require('handlebars-helpers');
+helpers.math({handlebars});
 
 describe("The mergeItems function", () => {
   const template = `
