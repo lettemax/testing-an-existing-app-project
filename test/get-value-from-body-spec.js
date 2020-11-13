@@ -10,12 +10,12 @@ describe("The getValueFromBody function", () => {
     // Act
     // Write code to invoke getValueFromBody and collect
     // the result
-
+    let result = getValueFromBody(body,key)
 
     // Assert
     // Replace the fail line with an assertion for the
     // expected value of ""
-    expect.fail('please write this test');
+    expect(result).to.equal("")
   });
 
   it('returns an empty string for a body without the key', () => {
