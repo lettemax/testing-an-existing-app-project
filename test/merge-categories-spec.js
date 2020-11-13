@@ -27,13 +27,29 @@ describe("mergeCategories()", () => {
     });
 
     it("should return a single <li> for one category", () => {
-      expect.fail('please write this test');
+      let arr = ['single string'];
+      let retVal = mergeCategories(template, arr, 'li');
+      expect(retVal).to.include("<div>")
+      expect(retVal).to.include("</div>")
+      expect(retVal).to.include("<ul>")
+      expect(retVal).to.include("</ul>")
 
+      expect(retVal).to.include("<li>single string</li>");
+      expect(retVal).to.not.include("<!-- Content here -->");
 
     });
 
     it("should return an <li> for each category", () => {
-      expect.fail('please write this test');
+      let arr =["first string", "second string"];
+      let retVal = mergeCategories(template, arr, 'li');
+      expect(retVal).to.include("<div>")
+      expect(retVal).to.include("</div>")
+      expect(retVal).to.include("<ul>")
+      expect(retVal).to.include("</ul>")
+
+      expect(retVal).to.include("<li>first string</li>");
+      expect(retVal).to.include("<li>second string</li>");
+      expect(retVal).to.not.include("<!-- Content here -->");
     });
   });
 

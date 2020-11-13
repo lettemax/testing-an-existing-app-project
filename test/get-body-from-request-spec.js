@@ -9,7 +9,7 @@ describe("The getBodyFromRequest function", () => {
   });
 
   it('returns an empty string for no body', done => {
-    expect.fail('please write this test');
+    
   });
 
   it('returns the data read from the stream', done => {
