@@ -6,7 +6,7 @@ describe("The searchItems function", () => {
     // Declare the items and term variables, here.
     // Items should be an empty array.
     // Term should be a non-empty term.
-
+    
     // ACT
     const result = searchItems(items, term);
 
