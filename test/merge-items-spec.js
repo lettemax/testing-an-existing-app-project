@@ -1,13 +1,30 @@
 const { expect } = require('chai');
 const { mergeItems } = require('../merge-items');
+const handlebars = require("handlebars")
+const handlebarsHelpers = require("handlebars-helpers")
+
 describe("The mergeItems function", () => {
   const template = `
-    <table>
-      <tbody>
-        <!-- Content here -->
-      </tbody>
-    </table>
-  `;
+  <table>
+    <tbody>
+      {{#each items}}
+        <tr>
+          <td>{{ add @index 1 }}</td>
+          <td>{{ title }}</td>
+          <td>{{ category }}</td>
+          <td>
+            {{#if isComplete}}
+            {{else}}
+              <form method="POST" action="/items/{{ add @index 1 }}">
+                <button class="pure-button">Complete</button>
+              </form>
+            {{/if}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+`;
   it("should return no <tr>s and no <td>s for no items", () => {
       let items = []
 
@@ -42,7 +59,7 @@ describe("The mergeItems function", () => {
     expect(retVal).to.contain("</tr>")
     expect(retVal).to.contain("<td>Title 1</td>")
     expect(retVal).to.contain("<td>Category 1</td>")
-    expect(retVal).to.contain("<form method='POST' action='/items/1'>")
+    expect(retVal).to.contain(`<form method="POST" action="/items/1">`)
 
     expect(retVal).to.not.contain("<!-- Content here -->")
 
@@ -70,6 +87,6 @@ const items = [
   });
 
   it("should return three <tr>s for three items", () => {
-      
+
   });
 });
