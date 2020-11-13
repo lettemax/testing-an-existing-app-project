@@ -12,10 +12,24 @@ describe("mergeCategories()", () => {
     `;
 
     it("should return no <li>s for no categories", () => {
+        let emptyArr = []
+        let retVal = mergeCategories(template,emptyArr,"li")
+
+        expect(retVal).to.include("<div>")
+        expect(retVal).to.include("</div>")
+        expect(retVal).to.include("<ul>")
+        expect(retVal).to.include("</ul>")
+
+        expect(retVal).to.not.include("<li>")
+        expect(retVal).to.not.include("</li>")
+        expect(retVal).to.not.include("<!-- Content here -->")
+
     });
 
     it("should return a single <li> for one category", () => {
       expect.fail('please write this test');
+
+
     });
 
     it("should return an <li> for each category", () => {
